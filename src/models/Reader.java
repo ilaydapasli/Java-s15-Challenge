@@ -3,40 +3,54 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reader extends Person {
+public class Reader {
+    private String name;
+    private int readerID;
     private List<Book> borrowedBooks;
+    private double balance; // Kullanıcının borcu
 
-    public Reader(String name, int id) {
-        super(name, id);
+    public Reader(String name, int readerID) {
+        this.name = name;
+        this.readerID = readerID;
         this.borrowedBooks = new ArrayList<>();
-
+        this.balance = 0.0;
     }
-    public void barrowBook(Book book){
-        if (borrowedBooks.size()<5 && book.isAvailable()){
+
+    public String getName() { return name; }
+    public int getReaderID() { return readerID; }
+    public List<Book> getBorrowedBooks() { return borrowedBooks; }
+    public double getBalance() { return balance; }
+
+    // ✅ Kitap ödünç alma
+    public void borrowBook(Book book, double price) {
+        if (borrowedBooks.size() < 5) {
             borrowedBooks.add(book);
-            book.updateStatus(false,getName());
-            System.out.println(getName()+" kitabı ödünç alındı"+book.getTitle());
-
-        }else {
-            System.out.println("Kitabı ödünç alamazsınız. SInırı aştınız yada kitap müsait değil.");
+            balance += price; // Kullanıcının borcuna ekleme yap
+            book.updateStatus(false, name); // Kitap artık ödünç alınmış
+            System.out.println("📖 " + name + " kitabı ödünç aldı: " + book.getTitle() + " - Ücret: " + price + " TL");
+        } else {
+            System.out.println("⚠ " + name + " en fazla 5 kitap ödünç alabilir!");
         }
     }
-    public void returnBook(Book book){
-        if (borrowedBooks.contains(book)){
-            borrowedBooks.remove(book);
-            book.updateStatus(true,null);
-            System.out.println(getName()+" kitabı geri iade etti"+ book.getTitle());
-        }else {
-            System.out.println("Bu kitap sizde değil");
+
+    // ✅ Kitap iade etme
+    public void returnBook(Book book, double refund) {
+        if (borrowedBooks.remove(book)) {
+            balance -= refund; // Kullanıcının borcundan düş
+            book.updateStatus(true, null); // Kitap artık müsait
+            System.out.println("📖 " + name + " kitabı iade etti: " + book.getTitle() + " - Ücret İadesi: " + refund + " TL");
+        } else {
+            System.out.println("⚠ Kullanıcı bu kitabı ödünç almamış!");
         }
+    }
 
-
-        }   @Override
-        public void showInfo(){
-            System.out.println("Okuyucu: " + getName() + " | ID: " + getId());
-            System.out.println("Ödünç alınan kitaplar:");
-            for (Book book : borrowedBooks) {
-                System.out.println("- " + book.getTitle());
-            }
+    // Kullanıcı bilgilerini gösterme
+    public void showInfo() {
+        System.out.println("👤 Okuyucu: " + name + " | ID: " + readerID);
+        System.out.println("📚 Ödünç Alınan Kitaplar:");
+        for (Book book : borrowedBooks) {
+            System.out.println("- " + book.getTitle());
+        }
+        System.out.println("💰 Kullanıcı Borcu: " + balance + " TL");
     }
 }
