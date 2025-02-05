@@ -83,7 +83,7 @@ public class Main {
                     library.addBook(newBook);
                     break;
 
-                case 2: // ✏ Kitap Güncelle
+                case 2: // Kitap Güncelle
                     System.out.print("Güncellenecek Kitap ID: ");
                     int updateID = scanner.nextInt();
                     scanner.nextLine();
@@ -98,29 +98,29 @@ public class Main {
                     library.updateBookInfo(updateID, newTitle, newAuthor, newCategory, newEdition);
                     break;
 
-                case 3: // ❌ Kitap Sil
+                case 3: // Kitap Sil
                     System.out.print("Silmek istediğiniz kitabın ID'sini girin: ");
                     int removeID = scanner.nextInt();
                     library.removeBook(removeID);
                     break;
 
-                case 4: // 📚 Tüm Kitapları Listele
+                case 4: //  Tüm Kitapları Listele
                     library.listAllBooks();
                     break;
 
-                case 5: // 🏷 Kategoriye Göre Kitap Listele
+                case 5: //  Kategoriye Göre Kitap Listele
                     System.out.print("Kategori adı: ");
                     String searchCategory = scanner.nextLine();
                     library.listBooksByCategory(searchCategory);
                     break;
 
-                case 6: // ✍ Yazara Göre Kitap Listele
+                case 6: //  Yazara Göre Kitap Listele
                     System.out.print("Yazar adı: ");
                     String searchAuthor = scanner.nextLine();
                     library.listBooksByAuthor(searchAuthor);
                     break;
 
-                case 7: // 📕 Kitap Ödünç Al
+                case 7: //  Kitap Ödünç Al
                     System.out.print("Ödünç almak istediğiniz kitabın ID'sini girin: ");
                     int borrowID = scanner.nextInt();
                     scanner.nextLine();
@@ -138,7 +138,7 @@ public class Main {
                     }
                     break;
 
-                case 8: // 📗 Kitap İade Et
+                case 8: //  Kitap İade Et
                     System.out.print("İade etmek istediğiniz kitabın ID'sini girin: ");
                     int returnID = scanner.nextInt();
                     scanner.nextLine();
@@ -156,7 +156,7 @@ public class Main {
                     }
                     break;
 
-                case 9: // 👤 Okuyucu Ekle
+                case 9: //  Okuyucu Ekle
                     System.out.print("Okuyucu Adı: ");
                     String readerNameToAdd = scanner.nextLine();
                     System.out.print("Okuyucu ID'si: ");
@@ -165,13 +165,13 @@ public class Main {
                     library.addReader(newReader);
                     break;
 
-                case 10: // 💰 Kullanıcı Borcunu Görüntüle
+                case 10: //  Kullanıcı Borcunu Görüntüle
                     System.out.print("Borcunu görmek istediğiniz kullanıcının adını girin: ");
                     String userName = scanner.nextLine();
                     library.displayUserBalance(userName);
                     break;
 
-                case 0: // 🚪 Çıkış
+                case 0: //  Çıkış
                     System.out.println("Sistem kapatılıyor...");
                     scanner.close();
                     return;
