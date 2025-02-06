@@ -8,12 +8,12 @@ public class Librarian extends Person {
         this.password = password;
     }
 
-    public boolean verifyMember(Member_Record member) {
+    public boolean verifyMember(MemberRecord member) {
         System.out.println(member.getName() + " doğrulandı.");
         return true;
     }
 
-    public void issueBookToMember(Book book, Member_Record member) {
+    public void issueBookToMember(Book book, MemberRecord member) {
         if (book.isAvailable()) {
             book.updateStatus(false, member.getName());
             member.issueBook();
@@ -23,7 +23,7 @@ public class Librarian extends Person {
         }
     }
 
-    public void returnBookFromMember(Book book, Member_Record member) {
+    public void returnBookFromMember(Book book, MemberRecord member) {
         book.updateStatus(true, null);
         member.returnBook();
         System.out.println("Kitap iade alındı: " + book.getTitle());

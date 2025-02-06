@@ -95,7 +95,7 @@ public class Library {
             if (book.getCategory().equalsIgnoreCase(category)) {
                 book.display();
                 found = true;
-            }
+            }//break ekle
         }
         if (!found) {
             System.out.println("⚠ Bu kategoride kitap bulunamadı.");

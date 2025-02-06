@@ -2,14 +2,14 @@ package models;
 
 import java.util.Date;
 
-public class Member_Record {
+public class MemberRecord {
     private int memberID;
     private String name;
     private Date dateOfMembership;
     private int maxBookLimit;
     private int booksIssued;
 
-    public Member_Record(int memberID, String name, Date dateOfMembership, int maxBookLimit) {
+    public MemberRecord(int memberID, String name, Date dateOfMembership, int maxBookLimit) {
         this.memberID = memberID;
         this.name = name;
         this.dateOfMembership = dateOfMembership;

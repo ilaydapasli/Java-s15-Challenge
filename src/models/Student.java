@@ -2,7 +2,7 @@ package models;
 
 import java.util.Date;
 
-public class Student extends Member_Record {
+public class Student extends MemberRecord {
     private String grade;
 
     public Student(int memberID, String name, Date dateOfMembership, int maxBookLimit, String grade) {

@@ -1,6 +1,6 @@
 package models;
 
-public class Person {
+public abstract class Person {
     private String name;
     private int id;
 
@@ -24,7 +24,7 @@ public class Person {
     public void setId(int id) {
         this.id = id;
     }
-    public void showInfo() {
+    public  void showInfo() {
         System.out.println("Name: " + name + ", ID: " + id);
     }
 }
